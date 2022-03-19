@@ -1,0 +1,26 @@
+DateTime.LocalNow()
+==============================
+if Value.Is([Exact number of people affected],Int64.Type) then 
+     if [Exact number of people affected] <= 100 then "1 to 100"
+
+     else 
+          if [Exact number of people affected] <= 1000                then "100 to 1000" else "1001+"
+else  "Unknow"
+==============================
+Date.Year([Received DayOnly])
+==============================
+if Text.Middle([#"Issue Level 3/4"],0,4)  = "APP " then [#"Issue Level 3/4"] else if 
+Text.Middle([#"Issue (of Enquiry) Issue Level 2"],0,4)  = "APP " then [#"Issue (of Enquiry) Issue Level 2"]  else if
+Text.Middle([#"Issue (of Enquiry) Issue Level 3"],0,4) ="APP " then [#"Issue (of Enquiry) Issue Level 3"] else if 
+Text.Middle([#"Issue (of Enquiry) Issue Level 4"],0,4) = "APP " then [#"Issue (of Enquiry) Issue Level 4"] else if[#"Issue Level 3/4"] <> null then [#"Issue Level 3/4"]  else  [#"Issue (of Enquiry) Issue Level 2"]
+==============================
+#date(if Date.Month([ClosedDate])<7 then Date.Year([ClosedDate])-1 else Date.Year([ClosedDate]),7,1)
+==============================
+if  Value.Is([Days to Notify OAIC], Int64.Type) then
+if [Days to Notify OAIC] <= 30 then "<30" else 
+ if [Days to Notify OAIC] <= 60 then "31-60" else 
+ if [Days to Notify OAIC] <= 120 then "61-120" else 
+ if [Days to Notify OAIC] <= 365 then "121-365" else 
+ ">365" else "null"
+ 
+
